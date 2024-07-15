@@ -199,6 +199,26 @@ public class MainActivity extends Activity
 			}
 		});
     }
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		MenuInflater infl = getMenuInflater();
+		infl.inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item)
+	{
+		switch (item.getItemId()) {
+			case R.id.clearAll:
+				al.clear();
+				redraw();
+				break;
+		}
+		return true;
+	}
 	private void prepareMediaRecorder() {
 		CharSequence date = DateFormat.format("ddMMyyyy_hhmmss", new Date());
 		File out = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES) +  "/" + "MOV" + date + ".mp4");
